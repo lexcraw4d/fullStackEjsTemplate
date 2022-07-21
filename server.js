@@ -26,10 +26,10 @@ app.use(cors())
 app.get('/', async (request, response) => {
     try {
         //Get data from DB
-        const content = await TestModel.find()
+        const content = await TestModel.find({})
         console.log(content)
-        response.render('index.ejs', {contentKey:content})
         //After data is found, then render ejs AND pass the data so that it can rendor on the page
+        response.render('index.ejs', {contentKey:content})
     } catch (error) {
         response.status(500).send({message: error.message})
     }
